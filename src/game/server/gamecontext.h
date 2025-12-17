@@ -490,6 +490,8 @@ private:
 	static void ConDoor(IConsole::IResult *pResult, void *pUserData);
 	static void ConClearDoors(IConsole::IResult *pResult, void *pUserData);
 	static void ConMathQuiz(IConsole::IResult *pResult, void *pUserData);
+	static void ConFreezeHammer(IConsole::IResult *pResult, void *pUserData);
+	static void ConUnFreezeHammer(IConsole::IResult *pResult, void *pUserData);
 	static void ConEndlessHook(IConsole::IResult *pResult, void *pUserData);
 	static void ConUnEndlessHook(IConsole::IResult *pResult, void *pUserData);
 	static void ConSolo(IConsole::IResult *pResult, void *pUserData);

@@ -213,6 +213,9 @@ void CPlayer::Reset()
 	m_CreatingDoor = false;
 	m_DoorPoint1 = vec2(0, 0);
 
+	// Freezehammer system
+	m_FreezeHammer = false;
+
 	m_CameraInfo.Reset();
 }
 

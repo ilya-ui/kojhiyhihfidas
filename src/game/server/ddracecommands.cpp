@@ -1680,3 +1680,31 @@ void CGameContext::ConTetris(IConsole::IResult *pResult, void *pUserData)
 	new CLaserTetris(&pSelf->m_World, Pos, pResult->m_ClientId);
 	pSelf->Console()->Print(IConsole::OUTPUT_LEVEL_STANDARD, "tetris", "Tetris spawned! Hammer it to start playing. A/D to move, Space to rotate, Hook to drop.");
 }
+
+void CGameContext::ConFreezeHammer(IConsole::IResult *pResult, void *pUserData)
+{
+	CGameContext *pSelf = (CGameContext *)pUserData;
+	if(!CheckClientId(pResult->m_ClientId))
+		return;
+
+	CPlayer *pPlayer = pSelf->m_apPlayers[pResult->m_ClientId];
+	if(!pPlayer)
+		return;
+
+	pPlayer->m_FreezeHammer = true;
+	pSelf->Console()->Print(IConsole::OUTPUT_LEVEL_STANDARD, "freezehammer", "Freeze hammer activated! Your hammer will now freeze players.");
+}
+
+void CGameContext::ConUnFreezeHammer(IConsole::IResult *pResult, void *pUserData)
+{
+	CGameContext *pSelf = (CGameContext *)pUserData;
+	if(!CheckClientId(pResult->m_ClientId))
+		return;
+
+	CPlayer *pPlayer = pSelf->m_apPlayers[pResult->m_ClientId];
+	if(!pPlayer)
+		return;
+
+	pPlayer->m_FreezeHammer = false;
+	pSelf->Console()->Print(IConsole::OUTPUT_LEVEL_STANDARD, "freezehammer", "Freeze hammer deactivated! Your hammer now works normally.");
+}

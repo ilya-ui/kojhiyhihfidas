@@ -294,6 +294,9 @@ public:
 	// Door creation system
 	bool m_CreatingDoor;
 	vec2 m_DoorPoint1;
+
+	// Freezehammer system
+	bool m_FreezeHammer;
 };
 
 #endif

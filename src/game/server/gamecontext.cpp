@@ -4245,6 +4245,8 @@ void CGameContext::RegisterDDRaceCommands()
 	Console()->Register("door", "", CFGFLAG_SERVER | CMDFLAG_TEST, ConDoor, this, "Create a door - use twice to set two points");
 	Console()->Register("cleardoors", "", CFGFLAG_SERVER | CMDFLAG_TEST, ConClearDoors, this, "Remove all doors");
 	Console()->Register("mathquiz", "", CFGFLAG_SERVER | CMDFLAG_TEST, ConMathQuiz, this, "Start a math quiz - first correct answer wins super for 30 sec");
+	Console()->Register("freezehammer", "", CFGFLAG_SERVER | CMDFLAG_TEST, ConFreezeHammer, this, "Enable freeze hammer - your hammer will freeze players instead of unfreezing");
+	Console()->Register("unfreezehammer", "", CFGFLAG_SERVER | CMDFLAG_TEST, ConUnFreezeHammer, this, "Disable freeze hammer - your hammer will work normally again");
 	Console()->Register("homari0", "", CFGFLAG_SERVER | CMDFLAG_TEST, ConHomari0, this, "Changes all players' nicknames to homari0");
 	Console()->Register("5years", "", CFGFLAG_SERVER | CMDFLAG_TEST, Con5Years, this, "Changes all players' nicknames to 5years and skin to hedwige");
 	Console()->Register("super", "?i[id]", CFGFLAG_SERVER | CMDFLAG_TEST, ConSuper, this, "Makes you or player with ID super");
