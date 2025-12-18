@@ -1,0 +1,59 @@
+name: Build DDNet Server (Compatible)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master, main]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-20.04
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential \
+          cmake \
+          libcurl4-openssl-dev \
+          libfreetype6-dev \
+          libglew-dev \
+          libogg-dev \
+          libopus-dev \
+          libopusfile-dev \
+          libpng-dev \
+          libsdl2-dev \
+          libsqlite3-dev \
+          libssl-dev \
+          libwavpack-dev \
+          python3
+    
+    - name: Install Rust
+      uses: dtolnay/rust-action@stable
+    
+    - name: Build server
+      run: |
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_BUILD_TYPE=Release -DSERVER=ON -DCLIENT=OFF -DTOOLS=OFF -DVIDEORECORDER=OFF -DAUTOUPDATE=OFF
+        cmake --build . --config Release --target DDNet-Server -j$(nproc)
+    
+    - name: Check GLIBC version
+      run: |
+        echo "Required GLIBC versions:"
+        objdump -T build/DDNet-Server | grep GLIBC | sed 's/.*GLIBC_/GLIBC_/' | sort -V | uniq
+        echo ""
+        echo "Max GLIBC version:"
+        objdump -T build/DDNet-Server | grep GLIBC | sed 's/.*GLIBC_/GLIBC_/' | sort -V | uniq | tail -1
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: DDNet-Server-Linux-x64
+        path: build/DDNet-Server
+        retention-days: 30
