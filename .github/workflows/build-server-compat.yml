@@ -34,7 +34,7 @@ jobs:
           python3
     
     - name: Install Rust
-      uses: dtolnay/rust-action@stable
+      uses: dtolnay/rust-toolchain@stable
     
     - name: Build server
       run: |
