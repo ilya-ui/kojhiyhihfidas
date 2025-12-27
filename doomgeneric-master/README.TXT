@@ -2,7 +2,7 @@
 = doomgeneric =
 ================
 
-To port DOOM easly, I made some changes to source code.
+To port DOOM easily, I made some changes to source code.
 Now, all you need to do is implement the functions in doomgeneric.h to port DOOM to a new system.
 doomgeneric_win.c is a Windows GDI port. It is also a good example for how to port doomgeneric.
 
@@ -30,13 +30,13 @@ bring it up on just about any platform.
 
 I wrote this code a long, long time ago, and there are plenty of things
 that seem downright silly in retrospect (using polar coordinates for
-clipping comes to mind), but overall it should still be a usefull base
+clipping comes to mind), but overall it should still be a useful base
 to experiment and build on.
 
 The basic rendering concept -- horizontal and vertical lines of constant
 Z with fixed light shading per band was dead-on, but the implementation
 could be improved dramatically from the original code if it were
-revisited.  The way the rendering proceded from walls to floors to
+revisited.  The way the rendering proceeded from walls to floors to
 sprites could be collapsed into a single front-to-back walk of the bsp
 tree to collect information, then draw all the contents of a subsector
 on the way back up the tree.  It requires treating floors and ceilings
@@ -80,7 +80,7 @@ playing with this, but if significant projects are undertaken, it would
 be cool to see a level of community cooperation.  I know that most early
 projects are going to be rough hacks done in isolation, but I would be
 very pleased to see a coordinated 'net release of an improved, backwards
-compatable version of DOOM on multiple platforms next year.
+compatible version of DOOM on multiple platforms next year.
 
 Have fun.
 
